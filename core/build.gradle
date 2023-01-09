@@ -1,0 +1,76 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'io.maxime.core'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    api 'androidx.core:core-ktx:1.9.0'
+    api 'androidx.appcompat:appcompat:1.5.1'
+    api 'com.google.android.material:material:1.7.0'
+    api "com.google.dagger:hilt-android:$hilt_version"
+
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    api 'androidx.activity:activity-compose:1.6.1'
+    api "androidx.compose.ui:ui:$compose_version"
+    api "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    api 'androidx.compose.material3:material3:1.1.0-alpha03'
+    api "androidx.hilt:hilt-navigation-compose:1.0.0"
+    api "io.coil-kt:coil-compose:2.2.2"
+
+    api "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    api "androidx.navigation:navigation-ui-ktx:$nav_version"
+    api "androidx.navigation:navigation-compose:$nav_version"
+
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha03"
+
+    api "com.google.accompanist:accompanist-pager:0.28.0"
+    api "com.google.accompanist:accompanist-pager-indicators:0.28.0"
+
+    api "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
+
+    // Annotation processor
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+}
